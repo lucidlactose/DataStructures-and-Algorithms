@@ -1,5 +1,6 @@
 # DataStructures-and-Algorithms
 Full of stuff from class
+<br />
 Planned: Make these algorithms in different languages
 
 ## Contains:
