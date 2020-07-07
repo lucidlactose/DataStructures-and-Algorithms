@@ -1,4 +1,4 @@
-#include "MinHeap.cpp"
+#include "../DataStructures/MinHeap.cpp"
 #include "HeapSort2.cpp"
 
 // Complexity: O(n * logn)

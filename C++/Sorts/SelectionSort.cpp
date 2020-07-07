@@ -1,4 +1,4 @@
-#include "printArray.cpp"
+#include "../printArray.cpp"
 
 /*
 	(Identical to Bubble Sort)

@@ -1,3 +1,5 @@
+#include "../printArray.cpp"
+
 // Complexity: O(n * logn)
 // Explanation: You only need a single heapify helper to sort the array.
 // 		What the helper does is dependent on your type of heap
