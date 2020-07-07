@@ -8,7 +8,9 @@ Planned: Make these algorithms in different languages
 * Bubble Sort
 * Selection Sort
 * Merge Sort
-* HeapSort (2)
+* Heap Sort (2)
+* Radix Sort
+* Quick Sort
 
 ### Data Structures:
 * Stack

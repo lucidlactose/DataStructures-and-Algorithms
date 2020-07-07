@@ -67,7 +67,7 @@ void merge( vector<int>& vec, int start, int mid, int end ) {
 	}
 }
 
-void MergeSort( vector<int>& vec, int start, int end ) {
+void mergeSort( vector<int>& vec, int start, int end ) {
 	if (start >= end) {
 		return;
 	}
@@ -78,14 +78,14 @@ void MergeSort( vector<int>& vec, int start, int end ) {
 
 	// this equation for mid is faster than (l + r)/2. idk why
 	int mid = start + (end - start)/ 2;
-	MergeSort(vec, start, mid);
-	MergeSort(vec, mid + 1, end);
+	mergeSort(vec, start, mid);
+	mergeSort(vec, mid + 1, end);
 	merge(vec, start, mid, end);
 }
 
 // this function does nothing but call the bigger function
-void MergeSort( vector<int>& vec ) {
-	MergeSort(vec, 0, vec.size() - 1);
+void mergeSort( vector<int>& vec ) {
+	mergeSort(vec, 0, vec.size() - 1);
 }
 
 int main() {
@@ -94,7 +94,7 @@ int main() {
 			411, 601, 546, 6, 87, 16, 7, 458, 145, 45, 
 			7, 8457, 34 };
 
-	MergeSort(arr);
+	mergeSort(arr);
 	printArray(arr);
 
 	return 0;
