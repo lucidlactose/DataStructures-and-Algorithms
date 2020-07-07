@@ -27,7 +27,7 @@ void takeInput( vector<int>& vec ) {
 
 #ifndef MAKEOUTPUT
 #define MAKEOUTPUT
-void makeOutput( const vector<int>& vec, string file_name, string test="") {
+void makeOutput( const vector<int>& vec, string file_name, string test ) {
 	ofstream out_file;
 	file_name += test + ".txt";
 	out_file.open(file_name);
