@@ -1,11 +1,12 @@
-#include "../printArray.cpp"
+#include <vector>
 
 /*
-	Complexity: O(n * logn)
+	Complexity: O(n * log n)
 	Explanation: This is also a divide and conquer algorithm similar to
 		MergeSort and has similar runtime. The difference being that
 		QuickSort sorts as it is breaks down into subarrays as a pre-order
-		sort vs MergeSort being a post-order sort.
+		sort vs MergeSort that connects everything once it's broken down
+		being a post-order sort.
 
 		The array is split in half everytime result in a O(log n/ log 2),
 		but since log 2 is constant, we usually say O(log n). We get O(n)
@@ -21,28 +22,29 @@
 		educated guesses and result in faster sorts.
 */
 
-
+// Complexity: O(n)
 // This function only wants 2 things
 // Everything to the LEFT of the pivot is LESS and
 // Everything to the RIGHT of the pivot is MORE
-// then return where the pivot's new index
-int partition( vector<int>& vec, int start, int end) {
+// Once this happens, place the pivot snuggly in it's new index and return that index
+int partition( std::vector<int>& vec, int start, int end) {
 	int pivot = vec[end];
 	int i = start -1;
 
 	for (int j=start; j <= end -1; ++j) {
 		if (vec[j] < pivot) {
 			i++;
-			swap(vec[i], vec[j]);
+			std::swap(vec[i], vec[j]);
 		}
 	}
-	swap(vec[++i], vec[end]);
+	std::swap(vec[++i], vec[end]);
 	return i;
 }
 
-// This splits the array in half in a pre-order style and every partition
-// sorts the array slightly
-void quickSort( vector<int>& vec, int start, int end) {
+
+// Complexity: O(n * log n)
+// this is a recursive 
+void quickSort( std::vector<int>& vec, int start, int end) {
 	if (start < end) {
 		int pivot = partition(vec, start, end);
 		quickSort(vec, start, pivot - 1);
@@ -50,20 +52,9 @@ void quickSort( vector<int>& vec, int start, int end) {
 	}
 }
 
-void quickSort( vector<int>& vec ) {
+// *with a cowboy accent* sometimes, we just want to pass in a vector and stop thinking
+// about the specifics
+void quickSort( std::vector<int>& vec ) {
 	quickSort(vec, 0, vec.size() -1);	
 }
 
-
-
-int main() {
-	vector<int> arr = {  5, 1, 190, 374, 14, 21, 4, 1241, 
-			341, 532, 6235, 364, 425, 37, 86745, 89,
-			411, 601, 546, 6, 87, 16, 7, 458, 145, 45, 
-			7, 8457, 34 };
-
-	quickSort(arr);
-	printArray(arr);
-
-	return 0;
-}

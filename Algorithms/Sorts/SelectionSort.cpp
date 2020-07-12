@@ -1,8 +1,6 @@
-#include "../printArray.cpp"
+#include <vector>
 
 /*
-	(Identical to Bubble Sort)
-
 	Complexity: O(n * n)
 	Explanation: n is the length of the list.
 			The first for loop runs from i=0 to n times while
@@ -13,9 +11,7 @@
 			the entire list every time so Omega(n * n)
 
 */
-
-void SelectionSort( vector<int>& vec ) {
-	
+void selectionSort( std::vector<int>& vec ) {
 	for (int i=0; i < vec.size(); ++i) {
 		int _min = i;
 		for (int j=i; j < vec.size(); ++j) {
@@ -25,18 +21,8 @@ void SelectionSort( vector<int>& vec ) {
 		}
 
 		if (_min != i) {
-			swap( vec[i], vec[_min] );
+			std::swap( vec[i], vec[_min] );
 		}
 	}
-
-}
-
-int main() {
-	vector<int> arr = {4, 1, 22, 4, 5, 5, 2, 7, 6235, 6, 362531, 2532, 454 };
-
-	SelectionSort(arr);
-	printArray(arr);
-
-	return 0;
 }
 

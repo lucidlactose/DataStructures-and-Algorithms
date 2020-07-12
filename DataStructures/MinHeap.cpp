@@ -1,4 +1,6 @@
-#include "printArray.cpp"
+// #include "../sharedFunctions.cpp"
+#include <vector>
+using namespace std;
 
 // This MinHeap has the basic insert, and extract functions
 // There are variations that allow direct modification of the array, but I
