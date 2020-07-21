@@ -1,27 +1,29 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
 #ifndef PRINTARRAY
 #define PRINTARRAY
-void printArray( vector<int>& vec ) {
-
+void printArray( std::vector<int>& vec ) {
 	for (int i=0; i < vec.size(); ++i) {
 		cout << vec[i] << " ";
 	}
 	cout << endl;
-
 }
 #endif 
 
 #ifndef TAKEINPUT
 #define TAKEINPUT
-void takeInput( vector<int>& vec ) {
+void takeInput( vector<int>& vec, string file_name ) {
 	int temp;
-	while (cin >> temp) {
+	fstream inFile;
+	inFile.open(file_name);
+	while (inFile >> temp) {
 		vec.push_back(temp);
 	}
+	inFile.close();
 }
 #endif
 

@@ -1,10 +1,10 @@
 CXX = g++
-CXXFLAGS = -std=c++11
+CXXFLAGS = -std=c++11 -g
 OBJFILES = BubbleSort.o CountingSort.o HeapSort.o HeapSort2.o \
 			MergeSort.o QuickSort.o RadixSort.o SelectionSort.o \
 			main.o
 
-all:  $(OBJFILES) test 
+all-cpp:  $(OBJFILES) test clean_results
 BubbleSort.o: ../BubbleSort.cpp
 	$(CXX) $(CXXFLAGS) -c ../BubbleSort.cpp
 CountingSort.o: ../CountingSort.cpp
@@ -26,6 +26,8 @@ main.o: main.cpp
 test:
 	./main.out
 	./main.sh
+clean_results:
+	rm -f *Sort*.txt
 clean_junk:
 	rm -f *.o *.out *Sort*.txt
 .PHONY: clean

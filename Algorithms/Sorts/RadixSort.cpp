@@ -1,23 +1,33 @@
 #include <vector>
 
 /*
-	Complexity: O(n * log k)
-	Exlanation: O(n) where n is size of the array. O(log k) where k is the largest
-		integer in the array. log(k) will give the number of digits of the max
-		number. Because of the hashing process, the sorting is very fast.
-		We hash based on the current digit starting at the first place to
-		10 ^ log(k)th place (ex log(1234) is 4, so 10^4 is 1000)
+	Complexity: O(n * log k) time
+				O(1)		 space
+				Where n is the size of the array and k is the largest integer
+	Exlanation:
+	    ******************************* TIME *******************************
+		It's obvious we need to go through the array, but the amount of times
+		is dependent on the largest integer. Because the helper sorts based on
+		the decimal place, we need to go through every one for correctness.
+	    
+		******************************* SPACE *******************************
+		This is a sort of "super sort" because it uses another sort in it's
+		in-between steps. In this case, we use a modified CountingSort.
+		The space RadixSort uses is tied to it's sub-sort. Since our modified
+		CountingSort doesn't use a max value from an array and always does 10,
+		it has O(10) or O(1).
 
-		This is the fastest sort for integers and will only work for integers.
-		If it doesn't use decimals and is a number(short int, HEX, etc), 
-		it'll work.
+		NOTES:
+		This is a specialized sort that only works for integers because of
+		the way the new index is calculated.
 */
+
 // Complexity: O(n)
 // This is a helper to find the max values in an array
 int findMax( const std::vector<int>& vec ) {
 	int _max = vec[0];
 	for (int i=0; i < vec.size(); ++i) {
-		_max =std:: max(_max, vec[i]);
+		_max = std::max(_max, vec[i]);
 	}
 	return _max;
 }
@@ -25,8 +35,6 @@ int findMax( const std::vector<int>& vec ) {
 // Complexity: O(n)
 // This helper has 4 steps in it
 // 1. Fill the buckets based on which digit you want
-//	- the equation for this is (vec[i]/ digits) % 10 where "digits" is
-//		the 1s place, 10ths, or 1000s
 // 2. Adjust the buckets for it's indexes
 // 3. Iterate backwards through the list, using the equation above to find
 //	their new indexes in the buckets
@@ -69,4 +77,3 @@ void radixSort( std::vector<int>& vec ) {
 		radixSortHelper( vec, digits );
 	}
 }
-

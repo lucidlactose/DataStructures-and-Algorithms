@@ -1,17 +1,36 @@
 #include <vector>
 
 /*
-	Complexity: O(n * log n)
-	Explanation: This is one of the fastest sorts matching QuickSort and HeapSort.
+	Complexity: O(n * log n) time
+				O(log n) 	 implicit space
+				O(n)		 explicit space
+				Where n in all cases is the size of the array
+	Explanation: 
+		******************************* TIME *******************************
 		Merge Sort starts by breaking down a list until the smallest subarray
-		possible of size 1. Now that it's small, it's easy to sort because it
-		starts with a comparison of 2 numbers, then it's a comparison of sorted
-		arrays.
-		Since it takes O(n) time to combine sorted lists and this
-		makes a total of log(n) total lists, it will take n * log(n) time.
+		possible of 1 item. Now that it's 1 item, it takes O(n) time to merge
+		sorted arrays. As they merge into bigger and bigger arrays, it stays O(n).
+		
+		It breaks down lists O(log n) times. Since it takes O(n) to merge a list,
+		then it takes O(n * log n) time.
+
+		******************************* SPACE *******************************
+		Implicit:
+			Because it needs to break down the array, it does a recursive amount of
+			calls. The most amount it will do is log(n) amount, therefore O(log n)
+		Explicit:
+			Note that this is not an in-place algorithm or else this would have
+			constant space.
+
+			When merging arrays, it needs to copy over the left and right values
+			into two arrays. The max size of these arrays will be half of the
+			total array. This means O(n/2 + n/2) or O(n).
+
+		NOTES: This is often compared to QuickSort and HeapSort for also having
+		O(n * log n) runtime and being very fast. Notice this is a post-order
+		function when coding this from scratch.
 
 		This is an example of a divide and conquer algorithm.
-		(Breakdown the problem into small problems and combine them)
 */
 
 // Complexity: O(n)
@@ -89,4 +108,3 @@ void mergeSort( std::vector<int>& vec, int start, int end ) {
 void mergeSort( std::vector<int>& vec ) {
 	mergeSort(vec, 0, vec.size() - 1);
 }
-

@@ -1,25 +1,28 @@
 #include <vector>
 
 /*
-	Complexity: O(n * log n)
-	Explanation: This is also a divide and conquer algorithm similar to
-		MergeSort and has similar runtime. The difference being that
-		QuickSort sorts as it is breaks down into subarrays as a pre-order
-		sort vs MergeSort that connects everything once it's broken down
-		being a post-order sort.
+	Complexity: O(n * log n) time
+				O(log n) 	 implicit space
+				O(1)		 explicit space
+				Where n is the size of the array.
+	Explanation:
+		******************************* TIME *******************************
+		The array is O(log n) because ideally, we will split the array in half
+		every time based on our pivot. A typical unsorted won't split perfectly
+		in half, but the result is still logarithmic.
 
-		The array is split in half everytime result in a O(log n/ log 2),
-		but since log 2 is constant, we usually say O(log n). We get O(n)
-		because we must break down the array to single bits, therefore
-		going through the whole array. The length of the array being n.
+		******************************* SPACE *******************************
+		The maximum amount of recursive calls will be O(log n) because the
+		pivot will always make the array smaller to some logarithmic scale.
+		However, this depends on the implementation. This is in-place so O(log n)
+		and there exists a variation of O(n) space to copy over values.
 
-		The effectiveness of QuickSort is dependent on you pivot. There
-		is debate over whether quick sort and merge sort is faster, but
-		there are variations of Quick sort that is faster than both. The
-		main problem is that it needs to have an educated guess before
-		choosing the pivot, and the methods for doing that can slow down
-		the sort. Because of this random pivots are *usually* better than
-		educated guesses and result in faster sorts.
+		NOTES:
+		Fun fact: How fast this is is how fast we can guess our perfect pivot
+		that always lands in the middle. There are variations of QuickSort that
+		try to makes this faster.
+
+		This is an example of a divide and conquer algorithm.
 */
 
 // Complexity: O(n)
@@ -41,7 +44,6 @@ int partition( std::vector<int>& vec, int start, int end) {
 	return i;
 }
 
-
 // Complexity: O(n * log n)
 // this is a recursive 
 void quickSort( std::vector<int>& vec, int start, int end) {
@@ -57,4 +59,3 @@ void quickSort( std::vector<int>& vec, int start, int end) {
 void quickSort( std::vector<int>& vec ) {
 	quickSort(vec, 0, vec.size() -1);	
 }
-

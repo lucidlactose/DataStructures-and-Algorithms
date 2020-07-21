@@ -1,47 +1,29 @@
 #include "../BubbleSort.cpp"
-#include "../SelectionSort.cpp"
-#include "../MergeSort.cpp"
-#include "../QuickSort.cpp"
+#include "../CountingSort.cpp"
 #include "../HeapSort.cpp"
 #include "../HeapSort2.cpp"
+#include "../MergeSort.cpp"
+#include "../QuickSort.cpp"
 #include "../RadixSort.cpp"
-#include "../CountingSort.cpp"
+#include "../SelectionSort.cpp"
 
 #include "test.cpp"
-#include <iostream>
+#include <unordered_map>
 
 int main() {
-	TestInput *input = new TestInput;
-	vector<SortFuncPointer> sortFunctions;
-	vector<string> fileNames;
+    unordered_map<string, SortFuncPointer> sortFunctions;
 
-	// instead of "&bubbleSort", without the & is fine
-	sortFunctions.push_back(&bubbleSort);
-	sortFunctions.push_back(&countingSort);
-	sortFunctions.push_back(&heapSort);
-	sortFunctions.push_back(&heapSort2);
-	sortFunctions.push_back(&mergeSort);
-	sortFunctions.push_back(&quickSort);
-	sortFunctions.push_back(&radixSort);
-	sortFunctions.push_back(&selectionSort);
+	// if for whatever reason this breaks at some point, it's counting sort's fault
+    sortFunctions["bubbleSort"] = &bubbleSort;
+    sortFunctions["countingSort"] = &countingSort;
+	sortFunctions["heapSort"] = &heapSort;
+	sortFunctions["heapSort2"] = &heapSort2;
+	sortFunctions["mergeSort"] = &mergeSort;
+	sortFunctions["quickSort"] = &quickSort;
+	sortFunctions["selectionSort"] = &selectionSort;
 
-	fileNames.push_back("bubbleSort");
-	fileNames.push_back("countingSort");
-	fileNames.push_back("heapSort");
-	fileNames.push_back("heap2Sort");
-	fileNames.push_back("mergeSort");
-	fileNames.push_back("quickSort");
-	fileNames.push_back("radixSort");
-	fileNames.push_back("selectionSort");
-	
-	input->sortFunctions = &sortFunctions;
-	input->fileNames = &fileNames;
-	
-	test(input, "1");
-	test(input, "2");
-
-	delete input;
-
-	return 0;
+    test(sortFunctions, "1");
+    test(sortFunctions, "2");
+    
+    return 0;
 }
-

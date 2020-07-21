@@ -1,26 +1,22 @@
 #include <vector>
 
 /*
-	Complexity: O(n * logn)
-	Explanation: You only need a single heapify helper to sort the array.
-		What the helper does is dependent on your type of heap
+	Complexity: O(n * logn) time
+				O(1)		explicit space
+	Explanation:
+		******************************* TIME *******************************
+		You only need a single heapify helper to sort the array. The best way
+		to do this is using the heapifyDown from the data structure function.
+		Here we call it our helper function that turns the array into a MaxHeap
+		and is O(log n). We call that function once for every value, resulting
+		in O(n * log n) time.
 
- 		If you're going to use a max heap, use the heapifyDown
- 		If you're going to use a min heap, use the heapifyUp
-		The idea is that you shrink the size of the array passed into the
- 		helper so the max/min bubbles to the edge, and then cut it from the heap
+		NOTE:
+		This solution exists because we technically don't need an entire MaxHeap
+		to solve this problem. All we need is an in-place MaxArray. 
 */
 
 // Complexity: O(log n)
-// Technically, we don't need an entire MinHeap. We only need a function that makes
-// our array into a heap. Whether you heapifyDown or heapifyUp depends on the main
-// functions final loop.
-// -	If we heapifyDown, we'll result with a min heap and a min index parameter.
-// -	if we heapifyUp, we'll result with a max heap and a max index parameter.
-// The reason we take in an index, is because we don't want to heapify the entire
-// array, just until a certain index.
-//
-// (P.S. This one is a max heap)
 void heapifyHelper( std::vector<int>& vec, int size, int index ) {
 	int largest= index;
 	int left = 2 * index + 1;

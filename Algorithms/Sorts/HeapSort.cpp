@@ -1,16 +1,25 @@
 #include "../../DataStructures/MinHeap.cpp"
 
 /*
-	Complexity: O(n * log n)
-	Explanation: First we have to go through the entire list and insert it into
-		the heap. Traversing an array of length n, will take O(n) time, and
-		the insertion of the MinHeap will take O(log n) because it is a 
-		complete binary tree. Ultimately resulting in a O(n * log n) complexity.
+	Complexity: O(n * log n) time
+				O(n)		 explicit space
+				Where n is the size of the array.
+	Explanation:
+		******************************* TIME *******************************
+		In order to use our MinHeap, we have to insert and extract every single
+		value. The insertion time for this MinHeap is O(log n). Because we are
+		doing this to every value in our array, we will have O(n * log n).
 
+		******************************* SPACE *******************************
+		The amount of space is dependent on the implementation, but this MinHeap
+		makes a new node in the tree for a total of O(n) space.
+
+		NOTES:
 		The main challenge of this version of heapSort is how we implement
-		the MinHeap (very minimal version for the problem found in Data
-		Structures folder).
+		the MinHeap (very minimal version for this sort found in Data Structures
+		folder).
 */
+
 void heapSort( std::vector<int>& vec ) {
 	MinHeap h;
 	int size = vec.size();
@@ -30,4 +39,3 @@ void heapSort( std::vector<int>& vec ) {
 		vec[i] = h.extract();
 	}
 }
-

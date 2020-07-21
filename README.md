@@ -11,6 +11,7 @@ Planned: Make these algorithms in different languages
 * Heap Sort (2)
 * Radix Sort
 * Quick Sort
+* Counting Sort
 
 ### Data Structures:
 * Stack
