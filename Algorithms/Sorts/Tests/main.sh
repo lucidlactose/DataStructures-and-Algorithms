@@ -2,14 +2,11 @@
 
 rm -f results.txt
 
-files=(answer*.txt)
-total=${#files[@]}
 i=0
 descriptions=("Unsorted array, no duplicates" "Unsorted array, duplicates")
-for f in "${files[@]}"; do
-	temp=${descriptions[i]}
+for f in answer*.txt; do
 	i=$(( i + 1 ))
-	echo "Test $i $temp" >> results.txt;
+	echo "Test $i: ${descriptions[i-1]}" >> results.txt;
 	./test.sh $i
 done
 
