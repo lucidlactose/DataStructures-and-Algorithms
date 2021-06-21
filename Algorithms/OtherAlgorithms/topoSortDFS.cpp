@@ -31,7 +31,7 @@ void mDFS(Graph g) {
 	printArray(topo);
 }
 
-void mDFS( Node* curr, vector<int>& topo, unordered_map<Node*, bool> visited ) {
+void mDFS( Node* curr, vector<int>& topo, unordered_map<Node*, bool>& visited ) {
 	visited[curr] = true;
 
 	for (Node* node: curr->neighbors) {
